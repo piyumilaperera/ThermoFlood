@@ -36,7 +36,7 @@ Named after the famous battle where a small force held back a massive one, this 
 
 
 <p align="center">
-  <img src="https://github.com/piyumilaperera/ThermoFlood/blob/main/media/1. Introduction.png"></p>
+  <img src="https://github.com/piyumilaperera/ThermoFlood/blob/main/media/images/1. Introduction.png"></p>
 
 
 ### What is a SYN Flood?
@@ -126,21 +126,21 @@ Setup Flow :-
 <p align="center">It's successfully sent packets to the target machine</p>
 
 <p align="center">
-  <img src="https://github.com/piyumilaperera/ThermoFlood/blob/main/media/2. Flood_without_spoofing.png"></p>
+  <img src="https://github.com/piyumilaperera/ThermoFlood/blob/main/media/images/2. Flood_without_spoofing.png"></p>
 
 
 
 <p align="center">We can confirm it by looking at the graph</p>
 
 <p align="center">
-  <img src="https://github.com/piyumilaperera/ThermoFlood/blob/main/media/3. Flood_without_spoofing.png"></p>
+  <img src="https://github.com/piyumilaperera/ThermoFlood/blob/main/media/images/3. Flood_without_spoofing.png"></p>
 
 ### Perform an attack with ip spoofing
 
 <p align="center">Now i am spoofed my ip, pay attention to my real ip and the spoofed one</p>
 
 <p align="center">
-  <img src="https://github.com/piyumilaperera/ThermoFlood/blob/main/media/4. Flood_with_spoofing.png"></p>
+  <img src="https://github.com/piyumilaperera/ThermoFlood/blob/main/media/images/4. Flood_with_spoofing.png"></p>
 
 
 
@@ -148,7 +148,7 @@ Setup Flow :-
   <p align="center">It's successfully sent packets to the target machine</p>
 
 <p align="center">
-  <img src="https://github.com/piyumilaperera/ThermoFlood/blob/main/media/5. Flood_with_spoofing.png"></p>
+  <img src="https://github.com/piyumilaperera/ThermoFlood/blob/main/media/images/5. Flood_with_spoofing.png"></p>
 
   ---
 
