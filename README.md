@@ -2,7 +2,7 @@
 
 # ThermoFlood
 
-**A high-performance SYN Flood Network Stress Testing Tool, built for low-level protocol research and security analysis.**
+**A high performance SYN Flood Network Stress Testing Tool, built for low level protocol research and security analysis.**
 
 ![C](https://img.shields.io/badge/Language-C-blue?style=flat-square&logo=c)
 ![Platform](https://img.shields.io/badge/Platform-Linux-informational?style=flat-square&logo=linux)
@@ -10,7 +10,7 @@
 ![Version](https://img.shields.io/badge/Version-1.0.0-green?style=flat-square)
 ![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)
 
-*Harnesses raw sockets and multi-threading to simulate heavy TCP SYN traffic with full IP spoofing capabilities.*
+*Harnesses raw sockets and multi threading to simulate heavy TCP SYN traffic with full IP spoofing capabilities.*
 
 </div>
 
@@ -34,6 +34,7 @@
 
 Named after the famous battle where a small force held back a massive one, this tool is designed to test the resilience of network infrastructure against resource exhaustion attacks.
 
+Why i am tend to create a tool like this ?. Since i done many socket programming tools using mostly C and python, i wanted to do some "Raw socket programming" to take my understanding about socket programming and systems to deeper levels.
 
 <p align="center">
   <img src="https://github.com/piyumilaperera/ThermoFlood/blob/main/media/images/1. Introduction.png"></p>
@@ -41,12 +42,12 @@ Named after the famous battle where a small force held back a massive one, this 
 
 ### What is a SYN Flood?
 
-In a normal TCP connection, a "Three-Way Handshake" occurs. An attacker sends multiple SYN (Synchronize) packets but never responds to the server's SYN-ACK, leaving the server with "half-open" connections that eventually exhaust its resources.
+In a normal TCP connection, a "Three Way Handshake" occurs. An attacker sends multiple SYN (Synchronize) packets but never responds to the server's SYN ACK, leaving the server with "half open" connections that eventually exhaust its resources.
 
 | Phase | Packet Type | Action |
 |-------|-------------|--------|
 | 1     | **SYN** | Client requests connection (ThermoFlood sends this) |
-| 2     | **SYN-ACK** | Server acknowledges and waits |
+| 2     | **SYN ACK** | Server acknowledges and waits |
 | 3     | **ACK** | Client completes handshake (Ignored in a flood) |
 
 ---
@@ -63,10 +64,10 @@ One of the most complex parts of this tool is calculating the **TCP Checksum**. 
 ### Header Structures
 The tool uses standard Linux headers (`<netinet/ip.h>` and `<netinet/tcp.h>`) to map the packet structure:
 
-* **IP Header (`struct iphdr`):** Defines the version (IPv4), Time-to-Live (TTL), and Source/Destination IP addresses.
+* **IP Header (`struct iphdr`):** Defines the version (IPv4), Time to Live (TTL), and Source/Destination IP addresses.
 * **TCP Header (`struct tcphdr`):** Defines the ports, Sequence numbers, and the `syn` flag bit.
 
-### The Pseudo-Header
+### The Pseudo Header
 Because the TCP checksum calculation must include the source and destination IPs to ensure the packet hasn't been misrouted, we use a custom struct:
 
 ```c
@@ -80,9 +81,9 @@ typedef struct pseudo_header
 } pseudo_header;
 ```
 
-### Multi-threading Logic
+### Multi threading Logic
 
-To achieve maximum throughput, the tool implements a thread-per-socket model using pthread. Each thread creates its own raw socket descriptor and loops the sendto function, significantly increasing the Packets Per Second (PPS) count compared to a single-threaded approach.
+To achieve maximum throughput, the tool implements a thread per socket model using pthread. Each thread creates its own raw socket descriptor and loops the sendto function, significantly increasing the Packets Per Second (PPS) count compared to a single threaded approach.
 
 ---
 
@@ -91,7 +92,7 @@ Prerequisites :-
 
   * GCC compiler (gcc)
 
-  * Linux Environment (Raw sockets require Linux-specific headers)
+  * Linux Environment (Raw sockets require Linux specific headers)
 
   * Root/Sudo Privileges (Required for SOCK_RAW)
 
@@ -165,7 +166,7 @@ Many modern firewalls and ISPs use SYN Cookies or ingress filtering (BCP 38) whi
 Current version (v1.0.0) uses static sequence numbers. Future updates will implement randomization for better simulation.
 
 4. Platform Support
-Tested on Debian-based Linux (Pop!_OS). Direct raw socket manipulation is highly platform-dependent and may require modifications for BSD or macOS due to differences in how the IPPROTO_RAW socket handles header offsets.
+Tested on Debian based Linux (Pop!_OS). Direct raw socket manipulation is highly platform dependent and may require modifications for BSD or macOS due to differences in how the IPPROTO_RAW socket handles header offsets.
 
 ---
 
